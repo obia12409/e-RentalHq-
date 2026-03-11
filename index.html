@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>e-RentalHQ Pitch Deck</title>
+<style>
+  :root {
+    --bg-main: #1a2332;
+    --bg-card: #1f2d3d;
+    --bg-alt: #162030;
+    --green: #2ecc71;
+    --green-dark: #27ae60;
+    --green-muted: rgba(46,204,113,0.15);
+    --green-border: rgba(46,204,113,0.3);
+    --text: #e8f0ea;
+    --muted: #7a9a8a;
+    --white: #ffffff;
+    --accent: #3ddc84;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: var(--bg-main); color: var(--text); }
+
+  .slide {
+    width: 100%;
+    min-height: 100vh;
+    padding: 60px 80px;
+    border-bottom: 1px solid rgba(46,204,113,0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--bg-main);
+  }
+
+  .slide-num { font-size: 13px; color: var(--muted); margin-top: auto; padding-top: 40px; }
+
+  /* Slide 1 */
+  .s1 { background: linear-gradient(135deg, #0f1c2a 0%, #1a2f20 100%); color: var(--white); }
+  .s1 h1 { font-size: 64px; font-weight: 900; margin-bottom: 20px; color: var(--white); }
+  .s1 .tagline { font-size: 28px; margin-bottom: 30px; line-height: 1.5; color: rgba(255,255,255,0.75); }
+  .s1 .market { font-size: 48px; font-weight: 900; color: var(--green); }
+  .s1 .market-label { font-size: 20px; color: rgba(255,255,255,0.55); }
+
+  /* Slide 2 */
+  .s2 { background: var(--bg-alt); }
+  .s2 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s2 h1 { font-size: 40px; font-weight: 900; margin-bottom: 24px; color: var(--white); }
+  .s2 blockquote { font-size: 18px; font-style: italic; border-left: 4px solid var(--green); padding-left: 20px; margin-bottom: 20px; line-height: 1.6; color: rgba(232,240,234,0.85); }
+  .s2 p { font-size: 16px; margin-bottom: 30px; line-height: 1.6; color: var(--muted); }
+  .s2 .stats { display: flex; gap: 60px; }
+  .s2 .stat-num { font-size: 56px; font-weight: 900; color: var(--green); }
+  .s2 .stat-label { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .s2 .conclusion { font-size: 16px; font-weight: 700; margin-top: 30px; color: var(--white); }
+
+  /* Slide 3 */
+  .s3 { background: var(--bg-main); }
+  .s3 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s3 h1 { font-size: 40px; font-weight: 900; margin-bottom: 8px; color: var(--white); }
+  .s3 .subtitle { font-size: 18px; margin-bottom: 30px; color: var(--muted); }
+  .s3 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 30px; }
+  .s3 .two-col > div { background: var(--bg-card); border: 1px solid var(--green-border); border-radius: 10px; padding: 24px; }
+  .s3 .col-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--green); }
+  .s3 li { font-size: 14px; line-height: 1.8; list-style: disc; margin-left: 20px; color: rgba(232,240,234,0.8); }
+  .s3 .tagline { font-size: 20px; font-weight: 900; text-align: center; margin-top: 10px; color: var(--white); background: var(--green-muted); border: 1px solid var(--green-border); border-radius: 8px; padding: 14px; }
+
+  /* Slide 4 */
+  .s4 { background: var(--bg-alt); }
+  .s4 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s4 h1 { font-size: 40px; font-weight: 900; margin-bottom: 6px; color: var(--white); }
+  .s4 .sub { font-size: 15px; color: var(--muted); margin-bottom: 28px; }
+  .s4 .adv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .s4 .adv-grid > div { background: var(--bg-card); border: 1px solid var(--green-border); border-radius: 10px; padding: 20px; }
+  .s4 .adv-full { grid-column: 1 / -1; }
+  .s4 .adv-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--green); }
+  .s4 .adv-desc { font-size: 14px; line-height: 1.6; color: rgba(232,240,234,0.75); }
+
+  /* Slide 5 */
+  .s5 { background: var(--bg-main); }
+  .s5 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s5 h1 { font-size: 40px; font-weight: 900; margin-bottom: 4px; color: var(--white); }
+  .s5 .sub { font-size: 18px; font-weight: 700; margin-bottom: 28px; color: var(--muted); }
+  .s5 .stream { margin-bottom: 16px; background: var(--bg-card); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 14px 18px; }
+  .s5 .stream-title { font-size: 15px; font-weight: 700; color: var(--green); }
+  .s5 .stream-desc { font-size: 14px; color: rgba(232,240,234,0.75); line-height: 1.6; margin-top: 4px; }
+
+  /* Slide 6 */
+  .s6 { background: var(--bg-alt); }
+  .s6 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s6 h1 { font-size: 40px; font-weight: 900; margin-bottom: 6px; color: var(--white); }
+  .s6 .rev-per-tenant { font-size: 64px; font-weight: 900; color: var(--green); }
+  .s6 .rev-label { font-size: 16px; color: var(--muted); margin-bottom: 40px; }
+  .s6 .econ-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .s6 .econ-grid > div { background: var(--bg-card); border: 1px solid var(--green-border); border-radius: 10px; padding: 24px; }
+  .s6 .econ-year { font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .s6 .econ-num { font-size: 48px; font-weight: 900; color: var(--white); }
+  .s6 .econ-sub { font-size: 14px; color: var(--muted); }
+  .s6 .econ-rev { font-size: 20px; font-weight: 700; margin-top: 8px; color: var(--green); }
+
+  /* Slide 7 */
+  .s7 { background: var(--bg-main); }
+  .s7 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s7 h1 { font-size: 40px; font-weight: 900; margin-bottom: 30px; color: var(--white); }
+  .s7 .trac-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .s7 .trac-grid > div { background: var(--bg-card); border: 1px solid var(--green-border); border-radius: 10px; padding: 28px; }
+  .s7 .trac-num { font-size: 56px; font-weight: 900; color: var(--green); }
+  .s7 .trac-label { font-size: 14px; color: var(--muted); line-height: 1.5; margin-top: 4px; }
+
+  /* Slide 8 */
+  .s8 { background: var(--bg-alt); }
+  .s8 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s8 h1 { font-size: 40px; font-weight: 900; margin-bottom: 30px; color: var(--white); }
+  .s8 .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .s8 .phases > div { background: var(--bg-card); border-top: 3px solid var(--green); border-radius: 0 0 10px 10px; padding: 24px; }
+  .s8 .phase-label { font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
+  .s8 .phase-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: var(--white); }
+  .s8 .phase-time { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+  .s8 .phase-desc { font-size: 14px; line-height: 1.7; color: rgba(232,240,234,0.75); }
+
+  /* Slide 9 */
+  .s9 { background: var(--bg-main); }
+  .s9 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s9 h1 { font-size: 40px; font-weight: 900; margin-bottom: 30px; color: var(--white); }
+  .s9 table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .s9 th { text-align: left; padding: 12px 14px; background: var(--bg-card); font-weight: 700; border: 1px solid rgba(46,204,113,0.2); color: var(--green); }
+  .s9 td { padding: 11px 14px; border: 1px solid rgba(46,204,113,0.1); color: rgba(232,240,234,0.8); }
+  .s9 tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .s9 tr:hover td { background: var(--green-muted); }
+
+  /* Slide 10 */
+  .s10 { background: var(--bg-alt); }
+  .s10 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s10 h1 { font-size: 40px; font-weight: 900; margin-bottom: 4px; color: var(--white); }
+  .s10 .ask-round { font-size: 22px; font-weight: 700; margin-bottom: 30px; color: var(--green); }
+  .s10 .ask-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .s10 .ask-grid > div { background: var(--bg-card); border: 1px solid var(--green-border); border-radius: 10px; padding: 20px; }
+  .s10 .ask-pct { font-size: 48px; font-weight: 900; color: var(--green); }
+  .s10 .ask-area { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--white); }
+  .s10 .ask-desc { font-size: 14px; color: rgba(232,240,234,0.7); line-height: 1.5; }
+  .s10 .ask-footer { font-size: 18px; font-weight: 700; color: var(--white); background: var(--green-muted); border: 1px solid var(--green-border); border-radius: 8px; padding: 14px 18px; }
+
+  /* Slide 11 */
+  .s11 { background: var(--bg-main); }
+  .s11 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s11 h1 { font-size: 40px; font-weight: 900; margin-bottom: 30px; color: var(--white); }
+  .s11 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .s11 .team-grid > div { background: var(--bg-card); border: 1px solid var(--green-border); border-radius: 10px; padding: 28px; }
+  .s11 .team-letter { font-size: 48px; font-weight: 900; margin-bottom: 8px; color: var(--green); }
+  .s11 .team-role { font-size: 13px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .s11 .team-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--white); }
+  .s11 .team-desc { font-size: 14px; color: rgba(232,240,234,0.7); line-height: 1.6; }
+
+  /* Slide 12 */
+  .s12 { background: var(--bg-alt); }
+  .s12 h2 { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .s12 h1 { font-size: 40px; font-weight: 900; margin-bottom: 30px; color: var(--white); }
+  .s12 .risk-item { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 16px; background: var(--bg-card); border-radius: 8px; padding: 16px 20px; border: 1px solid rgba(46,204,113,0.1); }
+  .s12 .risk-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .s12 .low { background: rgba(46,204,113,0.2); color: var(--green); border: 1px solid rgba(46,204,113,0.4); }
+  .s12 .med { background: rgba(255,193,7,0.15); color: #ffc107; border: 1px solid rgba(255,193,7,0.35); }
+  .s12 .risk-text { font-size: 14px; line-height: 1.6; color: rgba(232,240,234,0.8); }
+
+  /* Slide 13 */
+  .s13 { background: linear-gradient(135deg, #0f1c2a 0%, #1a2f20 100%); color: var(--white); }
+  .s13 h1 { font-size: 52px; font-weight: 900; margin-bottom: 24px; line-height: 1.2; color: var(--white); }
+  .s13 .journey { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: var(--green); }
+  .s13 p { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+  .s13 .contacts { margin-top: 30px; }
+  .s13 .contacts a { display: block; color: var(--green); font-size: 18px; margin-bottom: 8px; text-decoration: none; }
+  .s13 .contacts a:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .slide { padding: 40px 24px; }
+    .s2 .stats, .s3 .two-col, .s4 .adv-grid, .s6 .econ-grid,
+    .s7 .trac-grid, .s8 .phases, .s10 .ask-grid, .s11 .team-grid { grid-template-columns: 1fr; }
+    .s1 h1 { font-size: 40px; }
+    .s13 h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Slide 1 -->
+<div class="slide s1">
+  <h1>e-RentalHQ</h1>
+  <div class="tagline">No Agents.<br>Direct connection.<br>Smart Payment.</div>
+  <div class="market">₦22 Trillion</div>
+  <div class="market-label">Nigerian Rental Market.</div>
+  <div class="slide-num">1/13</div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide s2">
+  <h2>E-RentalHQ</h2>
+  <h1>The Problem</h1>
+  <blockquote>"A nurse earning ₦180,000/month lost her apartment because she couldn't produce ₦360,000 in 8 weeks. She could easily afford ₦30,000 monthly."</blockquote>
+  <p>In Nigeria, 88 million renters must pay 1year rent upfront (₦300k–₦500k) = 12 months of median income.</p>
+  <div class="stats">
+    <div>
+      <div class="stat-num">80%</div>
+      <div class="stat-label">Can't pay lump sum</div>
+    </div>
+    <div>
+      <div class="stat-num">70M</div>
+      <div class="stat-label">Urban renters affected</div>
+    </div>
+  </div>
+  <div class="conclusion">The problem isn't affordability. It's the lump sum requirement.</div>
+  <div class="slide-num">2/13</div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide s3">
+  <h2>E-RentalHQ</h2>
+  <h1>The Solution</h1>
+  <div class="subtitle">We pay landlords annual rent upfront. Tenants repay us monthly.</div>
+  <div class="two-col">
+    <div>
+      <div class="col-title">For Tenants 🏠</div>
+      <ul>
+        <li>Pay-As-You-Rent subscribers Pay ₦250($0.18)/weekly or (₦1,000/month) - No yearly subscription).</li>
+        <li>No lump sum stress.</li>
+        <li>Prospective tenants only pays ₦3,500/year.</li>
+        <li>Save ₦88k–₦138k in agent fees.</li>
+        <li>Secure GPS-verified properties at zero % commission.</li>
+        <li>AI voice navigation in local languages (5 languages).</li>
+        <li>Bolt-like turn-by-turn location navigation.</li>
+        <li>A location-aware live navigation chatbot.</li>
+        <li>Safety features (location sharing)</li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-title">For Landlords 🔑</div>
+      <ul>
+        <li>Get rent 60 days early</li>
+        <li>Verified tenants (BVN + income)</li>
+        <li>Zero vacancy risk</li>
+        <li>Complete dashboard</li>
+        <li>Guaranteed payment</li>
+        <li>Tenant management dashboard</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tagline">No Agents. Direct Connection. Problem Solved.</div>
+  <div class="slide-num">3/13</div>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide s4">
+  <h2>E-RentalHQ</h2>
+  <h1>5 Unfair Advantages</h1>
+  <div class="sub">What makes us different — what competitors can't replicate</div>
+  <div class="adv-grid">
+    <div>
+      <div class="adv-title">1. Float Income Model</div>
+      <div class="adv-desc">We invest monthly payments for 10 months before paying landlords, earning 15% - 8% returns from Nigeria's Money Market. This is because it's SEC regulated and offers high liquidity(24 -48 hour withdrawal) with low risk, steady income and capital preservation. This gives about ₦27k profit/tenant/year. At 100k tenants: ₦2.7B from float alone.</div>
+    </div>
+    <div>
+      <div class="adv-title">2. Domain Expertise</div>
+      <div class="adv-desc">Founders managed more than 45 properties for 2+ years. 80% lump sum struggle. - A lived experience.</div>
+    </div>
+    <div>
+      <div class="adv-title">3. GPS Verification</div>
+      <div class="adv-desc">Every property has GPS-tagged photos/videos preventing the average scam loss in Nigerian rentals market. Builds trust in a broken market.</div>
+    </div>
+    <div>
+      <div class="adv-title">4. Multilingual (5M+ More Users)</div>
+      <div class="adv-desc">AI location-aware chatbot, Bolt-like turn-by-turn navigation system, AI voice navigation in local languages(Pidgin, Yoruba, Igbo, Hausa). - unlocks 5M+ users base others ignore.</div>
+    </div>
+    <div class="adv-full">
+      <div class="adv-title">5. Credit Bureau Building (Data Moat)</div>
+      <div class="adv-desc">Creating Nigeria's first rental payment credit scores. After 12 months, users get credit access. Network effect: more data = better scores = more users.</div>
+    </div>
+  </div>
+  <div class="slide-num">4/13</div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide s5">
+  <h2>E-RentalHQ</h2>
+  <h1>Business Model</h1>
+  <div class="sub">5 Revenue Streams</div>
+  <div class="stream">
+    <div class="stream-title">1. Daily Service Fee: ₦12,000/tenant/year</div>
+    <div class="stream-desc">Tenants pay ₦250/week for flexible payment service.</div>
+  </div>
+  <div class="stream">
+    <div class="stream-title">2. Float Income: ₦27,000/tenant/year - PRIMARY</div>
+    <div class="stream-desc">We invest(Nigeria's Money Market Fund) tenant monthly payments for 10 months before paying landlords. At 100,000 tenants: ₦2.7B/year from float alone. A high liquidity(24-48 hours withdrawal), low-risk steady income and capital preservation regulated by the SEC.</div>
+  </div>
+  <div class="stream">
+    <div class="stream-title">3. Registration: ₦4,000 one-time</div>
+    <div class="stream-desc">KYC, BVN verification, onboarding costs.</div>
+  </div>
+  <div class="stream">
+    <div class="stream-title">4. B2B Corporate: ₦2M–₦5M per client/year</div>
+    <div class="stream-desc">Companies pay ₦8k–₦10k per employee as housing benefit.</div>
+  </div>
+  <div class="stream">
+    <div class="stream-title">5. Ads + Premium: ₦4M+/year by Year 2</div>
+    <div class="stream-desc">Featured property listings, local business ads, furniture ads, etc.</div>
+  </div>
+  <div class="slide-num">5/13</div>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide s6">
+  <h2>E-RentalHQ</h2>
+  <h1>Unit Economics</h1>
+  <div class="rev-per-tenant">₦39k</div>
+  <div class="rev-label">Annual Revenue/Tenant</div>
+  <div class="econ-grid">
+    <div>
+      <div class="econ-year">Year 1</div>
+      <div class="econ-num">500</div>
+      <div class="econ-sub">Tenants</div>
+      <div class="econ-rev">₦21M Revenue</div>
+    </div>
+    <div>
+      <div class="econ-year">Year 3</div>
+      <div class="econ-num">15,000</div>
+      <div class="econ-sub">Tenants</div>
+      <div class="econ-rev">₦586M Revenue</div>
+    </div>
+    <div>
+      <div class="econ-year">Year 5</div>
+      <div class="econ-num">100,000</div>
+      <div class="econ-sub">Tenants</div>
+      <div class="econ-rev">₦3.9B Revenue</div>
+    </div>
+  </div>
+  <div class="slide-num">6/13</div>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide s7">
+  <h2>E-RentalHQ</h2>
+  <h1>Traction & Validation</h1>
+  <div class="trac-grid">
+    <div>
+      <div class="trac-num">45+</div>
+      <div class="trac-label">Properties Managed<br>(2+ years experience)</div>
+    </div>
+    <div>
+      <div class="trac-num">97%</div>
+      <div class="trac-label">Of surveyed tenants<br>prefer monthly payments</div>
+    </div>
+    <div>
+      <div class="trac-num">₦65k</div>
+      <div class="trac-label">Avg scam loss prevented<br>by GPS verification</div>
+    </div>
+    <div>
+      <div class="trac-num">5M+</div>
+      <div class="trac-label">Extra potential users unlocked<br>by multilingual AI</div>
+    </div>
+  </div>
+  <div class="slide-num">7/13</div>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide s8">
+  <h2>E-RentalHQ</h2>
+  <h1>Go-to-Market Strategy</h1>
+  <div class="phases">
+    <div>
+      <div class="phase-label">Phase 1</div>
+      <div class="phase-title">Port Harcourt Pilot</div>
+      <div class="phase-time">Months 1–6</div>
+      <div class="phase-desc">Port Harcourt city.<br>500 tenants via partnerships and adverts on socials, radio, referrals and others.<br>Refine onboarding flow.</div>
+    </div>
+    <div>
+      <div class="phase-label">Phase 2</div>
+      <div class="phase-title">Port Harcourt & Lagos Expansion</div>
+      <div class="phase-time">Months 7–24</div>
+      <div class="phase-desc">Expand to more urban LGAs in Rivers state and then to Lagos state.<br>Launch B2B corporate housing.<br>15,000 tenants<br>Launch credit scoring beta</div>
+    </div>
+    <div>
+      <div class="phase-label">Phase 3</div>
+      <div class="phase-title">National + W. Africa</div>
+      <div class="phase-time">Years 3–5</div>
+      <div class="phase-desc">Abuja, Kano, Ibadan and all urban cities.<br>Ghana + Kenya entry<br>100,000 tenants<br>Full credit bureau operations</div>
+    </div>
+  </div>
+  <div class="slide-num">8/13</div>
+</div>
+
+<!-- Slide 9 -->
+<div class="slide s9">
+  <h2>E-RentalHQ</h2>
+  <h1>Competitive Landscape</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>E-RentalHQ</th>
+        <th>Traditional Agents</th>
+        <th>PropTech Apps</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Monthly Payment Option(with zero % fee/commission).</td>
+        <td>✅</td><td>❌</td><td>❌</td>
+      </tr>
+      <tr>
+        <td>GPS Verified Properties.</td>
+        <td>✅</td><td>❌</td><td>Partial(not same as ours)</td>
+      </tr>
+      <tr>
+        <td>Multilingual AI, Turn-by-turn navigation system, Live navigation chatbot, share my location.</td>
+        <td>✅</td><td>❌</td><td>❌</td>
+      </tr>
+      <tr>
+        <td>Pays Landlord Upfront.</td>
+        <td>✅ (60 days early)</td><td>❌</td><td>❌</td>
+      </tr>
+      <tr>
+        <td>Credit Bureau Building.</td>
+        <td>✅</td><td>❌</td><td>❌</td>
+      </tr>
+      <tr>
+        <td>Float Income Model.</td>
+        <td>✅</td><td>❌</td><td>❌</td>
+      </tr>
+      <tr>
+        <td>Zero Agent Fees.</td>
+        <td>✅</td><td>❌</td><td>Some(but charged huge fees)</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="slide-num">9/13</div>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide s10">
+  <h2>E-RentalHQ</h2>
+  <h1>The Ask</h1>
+  <div class="ask-round">Seed Round: ₦70M ($50,000 USD)</div>
+  <div class="ask-grid">
+    <div>
+      <div class="ask-pct">40%</div>
+      <div class="ask-area">Technology</div>
+      <div class="ask-desc">App development, BVN verification API, GPS infrastructure, Facial verification API.</div>
+    </div>
+    <div>
+      <div class="ask-pct">30%</div>
+      <div class="ask-area">Operations</div>
+      <div class="ask-desc">Port Harcourt pilot - first 500 tenants, staff (2 FTE), legal setup.</div>
+    </div>
+    <div>
+      <div class="ask-pct">20%</div>
+      <div class="ask-area">Float Capital</div>
+      <div class="ask-desc">Pay first landlords - proves the model works.</div>
+    </div>
+    <div>
+      <div class="ask-pct">10%</div>
+      <div class="ask-area">Marketing</div>
+      <div class="ask-desc">Partnerships, socials, referrals, onboarding, community outreach.</div>
+    </div>
+  </div>
+  <div class="ask-footer">500 tenants → Profitable → Series A ready</div>
+  <div class="slide-num">10/13</div>
+</div>
+
+<!-- Slide 11 -->
+<div class="slide s11">
+  <h2>E-RentalHQ</h2>
+  <h1>The Team</h1>
+  <div class="team-grid">
+    <div>
+      <div class="team-letter">F</div>
+      <div class="team-role">Founders</div>
+      <div class="team-title">Rental Market Expert</div>
+      <div class="team-desc">2+ years managing 45+ properties across Port Harcourt. Personally, experienced the lump sum crisis. So, we built e-RentalHQ to solve it.</div>
+    </div>
+    <div>
+      <div class="team-letter">T</div>
+      <div class="team-role">Tech Lead (Hiring)</div>
+      <div class="team-title">Mobile + Backend</div>
+      <div class="team-desc">Building: React Native app, BVN verification, GPS tagging, navigation, AI multilingual chatbot, payment infrastructure.</div>
+    </div>
+    <div>
+      <div class="team-letter">O</div>
+      <div class="team-role">Operations Lead</div>
+      <div class="team-title">Port Harcourt Ops</div>
+      <div class="team-desc">Tenant onboarding, landlord relationships, KYC verification, partnership management.</div>
+    </div>
+  </div>
+  <div class="slide-num">11/13</div>
+</div>
+
+<!-- Slide 12 -->
+<div class="slide s12">
+  <h2>E-RentalHQ</h2>
+  <h1>Risks & Mitigations</h1>
+  <div class="risk-item">
+    <div class="risk-badge low">LOW RISK</div>
+    <div class="risk-text">Default Risk: BVN + income verification, employer guarantors, &lt;5% actual default rate from managed portfolio data.</div>
+  </div>
+  <div class="risk-item">
+    <div class="risk-badge med">MED RISK</div>
+    <div class="risk-text">Regulatory Risk: Structured as rent financing (not lending), avoiding CBN banking regulations. To be legal framework ready.</div>
+  </div>
+  <div class="risk-item">
+    <div class="risk-badge med">MED RISK</div>
+    <div class="risk-text">FX / Inflation Risk: Naira-denominated operations. Float investment (15% - 18% returns hedge inflation).</div>
+  </div>
+  <div class="risk-item">
+    <div class="risk-badge low">LOW RISK</div>
+    <div class="risk-text">Landlord Trust: 60-day advance + higher yield = powerful incentive. Partnership network provides proof.</div>
+  </div>
+  <div class="risk-item">
+    <div class="risk-badge low">LOW RISK</div>
+    <div class="risk-text">Competition from Banks: Banks won't serve informal sector.</div>
+  </div>
+  <div class="slide-num">12/13</div>
+</div>
+
+<!-- Slide 13 -->
+<div class="slide s13">
+  <h1>Join Us in Fixing<br>Nigeria's Rental Crisis.</h1>
+  <div class="journey">₦70M($50,000) Seed → 500 Tenants → Scale to ₦3.9B</div>
+  <p>70 million(80% renters) Nigerians are waiting.</p>
+  <p>Every month they can't pay lump-sum, they lose their homes.</p>
+  <p>We have the solution. We need the fuel.</p>
+  <div class="contacts">
+    <a href="/cdn-cgi/l/email-protection#026750676c76636e6a7342656f636b6e2c616d6f"><span class="__cf_email__" data-cfemail="aecbfccbc0dacfc2c6dfeec9c3cfc7c280cdc1c3">[email&#160;protected]</span></a>
+    <a hre
